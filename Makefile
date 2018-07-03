@@ -858,7 +858,8 @@ ALL-y += init_sp_bss_offset_check
 endif
 
 LDFLAGS_u-boot += $(LDFLAGS_FINAL)
-
+LDFLAGS_u-boot += $(call ld-option, --no-dynamic-linker)
+#added by liujiqing
 # Avoid 'Not enough room for program headers' error on binutils 2.28 onwards.
 LDFLAGS_u-boot += $(call ld-option, --no-dynamic-linker)
 
