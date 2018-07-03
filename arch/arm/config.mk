@@ -48,8 +48,8 @@ endif
 
 # Only test once
 ifeq ($(CONFIG_$(SPL_)SYS_THUMB_BUILD),y)
-archprepare: checkthumb checkgcc6
-
+#archprepare: checkthumb checkgcc6
+archprepare: checkthumb
 checkthumb:
 	@if test "$(call cc-name)" = "gcc" -a \
 			"$(call cc-version)" -lt "0404"; then \
@@ -58,16 +58,16 @@ checkthumb:
 		echo '*** Your board is configured for THUMB mode.'; \
 		false; \
 	fi
-else
-archprepare: checkgcc6
+#else
+#archprepare: checkgcc6
 endif
 
-checkgcc6:
-	@if test "$(call cc-name)" = "gcc" -a \
-			"$(call cc-version)" -lt "0600"; then \
-		echo '*** Your GCC is older than 6.0 and is not supported'; \
-		false; \
-	fi
+#checkgcc6:
+#	@if test "$(call cc-name)" = "gcc" -a \
+#			"$(call cc-version)" -lt "0600"; then \
+#		echo '*** Your GCC is older than 6.0 and is not supported'; \
+#		false; \
+#	fi
 
 
 # Try if EABI is supported, else fall back to old API,
